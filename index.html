@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Theohumanist Society</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/symbol.svg" type="image/svg+xml">
+
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="left">
+            <img src="images/background.avif"
+                alt="Background">
+            <div class="symbol-text-container">
+                <div class="symbol">
+                </div>
+                <h2>Theohumanist Society</h2>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="top">
+
+                <h3>The Theohumanist Society is a community dedicated to explore the connection between humanity and divinity.
+                <br><br>
+                We celebrate diverse spiritual paths and foster a divine connection.
+                </h3>
+
+            </div>
+
+            <div class="middle">
+                <div class="middle-text">
+                    <h3>Get informed.</h3>
+                </div>
+                <form action="https://api.web3forms.com/submit" method="POST" id="myForm">
+                    
+                    <input type="hidden" name="access_key" value="020e055d-c713-4c56-9b1e-7ef7d709773d">
+                    <!-- <input type="hidden" name="redirect" value="thankyou.html"> -->
+
+                    <div class="name-group">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="surname" name="surname" placeholder="Surname">
+                        </div>
+                    </div>
+                    <div class="email-group">
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email-verification" name="email-verification" placeholder="Email Verification">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="bottom">
+              <button class="join-btn">JOIN US</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector(".join-btn").addEventListener("click", function (event) {
+
+                let email = document.getElementById("email").value;
+                let emailVerification = document.getElementById("email-verification").value;
+
+                // Verify that the email addresses are valid
+                let regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+                if (!regex.test(email) || !regex.test(emailVerification)) {
+                    alert("Please enter a valid email address.");
+                    event.preventDefault(); // This stops the form from submitting
+                    return;
+                }
+
+                // Verify that the email addresses match
+                if (email !== emailVerification) {
+                    alert("The email addresses do not match.");
+                    event.preventDefault(); // This stops the form from submitting
+                    return;
+                }
+
+                // If everything is valid, send the form using AJAX
+                let formData = new FormData(document.getElementById("myForm"));
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData,
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // If the submission was successful, redirect the user
+                            window.location.href = "thankyou.html";
+                        } else {
+                            // If there was an error, show a message to the user
+                            alert("There was an error submitting the form. Please try again.");
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        alert("There was an error submitting the form. Please try again.");
+                    });
+            });
+
+    </script>   
+1
+
+</body>
+
+</html>
