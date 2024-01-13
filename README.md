@@ -4,6 +4,8 @@
 
 Welcome to the Theohumanist Society Newsletter Subscription Page repository! This interactive page is crafted with love using CSS and JavaScript to provide users with a seamless experience when subscribing to a spiritual content newsletter.
 
+![Screenshot](./resources/screenshot.png)
+
 ## Features
 
 - **Interactive Form**: A user-friendly form that captures essential details like name and email.
